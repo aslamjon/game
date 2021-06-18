@@ -1,0 +1,79 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; }
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; }
+
+.container {
+  position: relative; }
+  .container .card {
+    width: 404px;
+    height: 500px;
+    box-shadow: 0 0 10px #dddddd;
+    padding: 10px 1px;
+    border-radius: 5px;
+    position: relative;
+    transition: 0.3s;
+    overflow: hidden; }
+    .container .card .row-way {
+      display: flex;
+      justify-content: space-between;
+      padding: 40px 0 0 0; }
+      .container .card .row-way .item1, .container .card .row-way .item2 {
+        height: 20px;
+        background-color: #222222;
+        border-radius: 3px; }
+    .container .card .ball {
+      width: 20px;
+      height: 20px;
+      background-color: #555555;
+      border-radius: 50px;
+      transition: 0.08s;
+      position: absolute;
+      transform: translate(10px, 320px); }
+  .container .ascenter {
+    position: absolute;
+    top: 60%;
+    display: flex;
+    justify-content: center;
+    width: 100%; }
+    .container .ascenter button {
+      width: 120px;
+      padding: 6px 10px;
+      font-size: 25px;
+      background: #1e2761;
+      color: white;
+      border: none;
+      outline: none;
+      border-radius: 5px;
+      transition: 0.3s; }
+  .container .mobilBtn {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px; }
+    .container .mobilBtn #left, .container .mobilBtn #right {
+      width: 120px;
+      padding: 4px 10px 10px 10px;
+      font-size: 25px;
+      font-weight: bold;
+      background: #1e2761;
+      color: white;
+      border: none;
+      outline: none;
+      border-radius: 5px;
+      transition: 0.3s; }
+      .container .mobilBtn #left:hover, .container .mobilBtn #right:hover {
+        background: black; }
+
+@media (max-width: 405px) {
+  .container {
+    width: 95%; }
+    .container .card {
+      width: 100%; } }
+
+/*# sourceMappingURL=style.css.map */

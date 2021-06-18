@@ -1,0 +1,91 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+.container {
+    position: relative;
+    .card {
+        width: 404px;
+        height: 500px;
+        // border: 1px solid #222222;
+        box-shadow: 0 0 10px rgb(221, 221, 221);
+        padding: 10px 1px;
+        border-radius: 5px;
+        position: relative;
+        transition: 0.3s;
+        overflow: hidden;
+        .row-way {
+            display: flex;
+            justify-content: space-between;
+            padding: 40px 0 0 0;
+            .item1, .item2 {
+                height: 20px;
+                background-color: #222222;
+                border-radius: 3px;
+            }
+        }
+        .ball {
+            width: 20px;
+            height: 20px;
+            background-color: #555555;
+            border-radius: 50px;
+            transition: 0.08s;
+            position: absolute;
+            transform: translate(10px, 320px);
+        }
+    }
+    .ascenter {
+        position: absolute;
+        top: 60%;
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        button {
+            width: 120px;
+            padding: 6px 10px;
+            font-size: 25px;
+            background: #1e2761;
+            color: white;
+            border: none;
+            outline: none;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+
+    }
+    .mobilBtn {
+        display: flex;
+        justify-content: space-between;
+        margin: 20px;
+        #left, #right {
+            width: 120px;
+            padding: 4px 10px 10px 10px;
+            font-size: 25px;
+            font-weight: bold;
+            background: #1e2761;
+            color: white;
+            border: none;
+            outline: none;
+            border-radius: 5px;
+            transition: 0.3s;
+            &:hover {
+                background: black;
+            }
+        }
+    }
+}
+@media (max-width: 405px) {
+    .container {
+        width: 95%;
+        .card {
+            width: 100%;
+        }
+    }
+}
