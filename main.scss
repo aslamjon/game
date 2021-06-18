@@ -3,11 +3,33 @@
     padding: 0;
     box-sizing: border-box;
 }
+@font-face {
+    font-family: "Roboto-Black";
+    src: url("Roboto/Roboto-Black.ttf") format('truetype');
+}
 body {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
+    font-family: "Roboto-Black",sans-serif;
+}
+.icon {
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    background-color: #fff;
+    cursor: pointer;
+    mask: {
+        position: center center;
+        size: 90%;
+        repeat: no-repeat;
+    }
+    -webkit-mask: {
+        position: center center;
+        size: 90%;
+        repeat: no-repeat;
+    }
 }
 .container {
     position: relative;
@@ -15,9 +37,10 @@ body {
         width: 404px;
         height: 500px;
         // border: 1px solid #222222;
-        box-shadow: 0 0 10px rgb(221, 221, 221);
-        padding: 10px 1px;
-        border-radius: 5px;
+        box-shadow: 0 0 10px 0 rgb(221, 221, 221);
+        clip-path: inset(0px -10px -10px -10px);
+        padding: 10px 0px;
+        border-radius: 0 0 5px 5px;
         position: relative;
         transition: 0.3s;
         overflow: hidden;
@@ -36,17 +59,69 @@ body {
             height: 20px;
             background-color: #555555;
             border-radius: 50px;
-            transition: 0.08s;
+            transition: 0.08s linear;
             position: absolute;
             transform: translate(10px, 320px);
+            transition: all 0.1s linear;
+        }
+        .rowPlace {
+            transition: 0.2s cubic-bezier(.53,.53,.53,.53);
+        }
+    }
+    #title, .ascenter, #gameOver {
+        position: absolute;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        transition: 0.3s linear;
+    }
+    #gameOver {
+        top: 30%;
+        opacity: 0;
+        transition: all 0.3s linear;
+        display: none;
+        div {
+            color: white;
+            div {
+                font-size: 40px;
+                font-weight: bold;
+                text-align: center;
+                margin-bottom: 20px;
+            }
+            button {
+                width: 120px;
+                padding: 6px 10px;
+                font-size: 25px;
+                background: #1e2761;
+                color: white;
+                border: none;
+                outline: none;
+                border-radius: 5px;
+                transition: 0.3s;
+                cursor: pointer;
+                margin: 0 40px;
+            }
+        }
+    }
+    #title {
+        top: 200px;
+        color: white;
+        font-size: 20px;
+        text-align: center;
+        padding: 0 20px;
+        line-height: 30px;
+        opacity: 0.7;
+        span {
+            background:#1e2761;
+            width: 120px;
+            padding: 0px 10px 4px 10px;
+            font-size: 25px;
+            font-weight: bold;
+            border-radius: 5px;
         }
     }
     .ascenter {
-        position: absolute;
         top: 60%;
-        display: flex;
-        justify-content: center;
-        width: 100%;
         button {
             width: 120px;
             padding: 6px 10px;
@@ -57,8 +132,8 @@ body {
             outline: none;
             border-radius: 5px;
             transition: 0.3s;
+            cursor: pointer;
         }
-
     }
     .mobilBtn {
         display: flex;
@@ -75,12 +150,66 @@ body {
             outline: none;
             border-radius: 5px;
             transition: 0.3s;
+            cursor: pointer;
             &:hover {
                 background: black;
             }
         }
     }
+    .notification {
+        display: flex;
+        justify-content: space-between;
+        border-radius: 5px 5px 0 0;
+        box-shadow: 0 0 5px rgb(201, 201, 201);
+        padding: 5px 10px 2px 10px;
+        .first {
+            display: flex;
+            #log {
+                padding: 0 10px;
+                span {
+                    color: rgb(141, 27, 27);
+                }
+            }
+        }
+        .second {
+            display: flex;
+            align-items: center;
+        }
+        
+        .signal, .wifi, .battery{
+            background-color: #222222;
+            margin: 0 1px;
+        }
+        .battery {
+            width: 26px;
+            mask-image: url('img/battery-70.png');
+            -webkit-mask-image: url('img/battery-70.png');
+        }
+        .wifi {
+            mask-image: url('img/wifi.svg');
+            -webkit-mask-image: url('img/wifi.svg');
+        }
+        .signal {
+            height: 15px;
+            mask-image: url('img/signal.svg');
+            -webkit-mask-image: url('img/signal.svg');
+        }
+    }
+    #reload {
+        position: absolute;
+        top: 35px;
+        right: 10px;
+        mask-image: url('img/refreshing.svg');
+        -webkit-mask-image: url('img/refreshing.svg');
+        background-color:  #0392cf;
+        display: none;
+        opacity: 0;
+        transition: all 0.3s linear;
+    }
 }
+
+
+
 @media (max-width: 405px) {
     .container {
         width: 95%;

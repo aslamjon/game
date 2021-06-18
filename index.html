@@ -10,10 +10,29 @@
 <body>
     
     <div class="container">
-        <div id="log"></div>
-        <div class="card">
+        <div class="notification">
+            <div class="first">
+                <div id="time"></div>
+                <div id="log"></div>
+            </div>
+            <div class="second">
+                <div class="signal icon"></div>
+                <div class="wifi icon"></div>
+                <div class="battery icon"></div>
+            </div>
+        </div>
+        <div class="card" id="card">
             <div class="ball"></div>
             <div class="rowPlace"></div>
+        </div>
+        <div id="gameOver">
+            <div>
+                <div>Game Over</div>
+                <button type="button" id="restart">Restart</button>
+            </div>
+        </div>
+        <div id="title">
+            <div>Ball control with left and right arrow or <br> <span>&#8592;</span> and <span>&#8594;</span> buttons</div>
         </div>
         <div class="ascenter">
             <button type="button" id="start">Start</button>
@@ -22,6 +41,8 @@
             <button type="button" id="left">&#8592;</button>
             <button type="button" id="right">&#8594;</button>
         </div>
+        <div id="reload" class="icon"></div>
+        
     </div>
 
     <script src="main.js"></script>

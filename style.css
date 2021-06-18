@@ -1,79 +1,217 @@
 * {
   margin: 0;
   padding: 0;
-  box-sizing: border-box; }
+  box-sizing: border-box;
+}
 
+@font-face {
+  font-family: "Roboto-Black";
+  src: url("Roboto/Roboto-Black.ttf") format("truetype");
+}
 body {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh; }
+  height: 100vh;
+  font-family: "Roboto-Black", sans-serif;
+}
+
+.icon {
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  background-color: #fff;
+  cursor: pointer;
+  mask-position: center center;
+  mask-size: 90%;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center center;
+  -webkit-mask-size: 90%;
+  -webkit-mask-repeat: no-repeat;
+}
 
 .container {
-  position: relative; }
-  .container .card {
-    width: 404px;
-    height: 500px;
-    box-shadow: 0 0 10px #dddddd;
-    padding: 10px 1px;
-    border-radius: 5px;
-    position: relative;
-    transition: 0.3s;
-    overflow: hidden; }
-    .container .card .row-way {
-      display: flex;
-      justify-content: space-between;
-      padding: 40px 0 0 0; }
-      .container .card .row-way .item1, .container .card .row-way .item2 {
-        height: 20px;
-        background-color: #222222;
-        border-radius: 3px; }
-    .container .card .ball {
-      width: 20px;
-      height: 20px;
-      background-color: #555555;
-      border-radius: 50px;
-      transition: 0.08s;
-      position: absolute;
-      transform: translate(10px, 320px); }
-  .container .ascenter {
-    position: absolute;
-    top: 60%;
-    display: flex;
-    justify-content: center;
-    width: 100%; }
-    .container .ascenter button {
-      width: 120px;
-      padding: 6px 10px;
-      font-size: 25px;
-      background: #1e2761;
-      color: white;
-      border: none;
-      outline: none;
-      border-radius: 5px;
-      transition: 0.3s; }
-  .container .mobilBtn {
-    display: flex;
-    justify-content: space-between;
-    margin: 20px; }
-    .container .mobilBtn #left, .container .mobilBtn #right {
-      width: 120px;
-      padding: 4px 10px 10px 10px;
-      font-size: 25px;
-      font-weight: bold;
-      background: #1e2761;
-      color: white;
-      border: none;
-      outline: none;
-      border-radius: 5px;
-      transition: 0.3s; }
-      .container .mobilBtn #left:hover, .container .mobilBtn #right:hover {
-        background: black; }
+  position: relative;
+}
+.container .card {
+  width: 404px;
+  height: 500px;
+  box-shadow: 0 0 10px 0 #dddddd;
+  clip-path: inset(0px -10px -10px -10px);
+  padding: 10px 0px;
+  border-radius: 0 0 5px 5px;
+  position: relative;
+  transition: 0.3s;
+  overflow: hidden;
+}
+.container .card .row-way {
+  display: flex;
+  justify-content: space-between;
+  padding: 40px 0 0 0;
+}
+.container .card .row-way .item1, .container .card .row-way .item2 {
+  height: 20px;
+  background-color: #222222;
+  border-radius: 3px;
+}
+.container .card .ball {
+  width: 20px;
+  height: 20px;
+  background-color: #555555;
+  border-radius: 50px;
+  transition: 0.08s linear;
+  position: absolute;
+  transform: translate(10px, 320px);
+  transition: all 0.1s linear;
+}
+.container .card .rowPlace {
+  transition: 0.2s cubic-bezier(0.53, 0.53, 0.53, 0.53);
+}
+.container #title, .container .ascenter, .container #gameOver {
+  position: absolute;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  transition: 0.3s linear;
+}
+.container #gameOver {
+  top: 30%;
+  opacity: 0;
+  transition: all 0.3s linear;
+  display: none;
+}
+.container #gameOver div {
+  color: white;
+}
+.container #gameOver div div {
+  font-size: 40px;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 20px;
+}
+.container #gameOver div button {
+  width: 120px;
+  padding: 6px 10px;
+  font-size: 25px;
+  background: #1e2761;
+  color: white;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+  transition: 0.3s;
+  cursor: pointer;
+  margin: 0 40px;
+}
+.container #title {
+  top: 200px;
+  color: white;
+  font-size: 20px;
+  text-align: center;
+  padding: 0 20px;
+  line-height: 30px;
+  opacity: 0.7;
+}
+.container #title span {
+  background: #1e2761;
+  width: 120px;
+  padding: 0px 10px 4px 10px;
+  font-size: 25px;
+  font-weight: bold;
+  border-radius: 5px;
+}
+.container .ascenter {
+  top: 60%;
+}
+.container .ascenter button {
+  width: 120px;
+  padding: 6px 10px;
+  font-size: 25px;
+  background: #1e2761;
+  color: white;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+  transition: 0.3s;
+  cursor: pointer;
+}
+.container .mobilBtn {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px;
+}
+.container .mobilBtn #left, .container .mobilBtn #right {
+  width: 120px;
+  padding: 4px 10px 10px 10px;
+  font-size: 25px;
+  font-weight: bold;
+  background: #1e2761;
+  color: white;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+  transition: 0.3s;
+  cursor: pointer;
+}
+.container .mobilBtn #left:hover, .container .mobilBtn #right:hover {
+  background: black;
+}
+.container .notification {
+  display: flex;
+  justify-content: space-between;
+  border-radius: 5px 5px 0 0;
+  box-shadow: 0 0 5px #c9c9c9;
+  padding: 5px 10px 2px 10px;
+}
+.container .notification .first {
+  display: flex;
+}
+.container .notification .first #log {
+  padding: 0 10px;
+}
+.container .notification .first #log span {
+  color: #8d1b1b;
+}
+.container .notification .second {
+  display: flex;
+  align-items: center;
+}
+.container .notification .signal, .container .notification .wifi, .container .notification .battery {
+  background-color: #222222;
+  margin: 0 1px;
+}
+.container .notification .battery {
+  width: 26px;
+  mask-image: url("img/battery-70.png");
+  -webkit-mask-image: url("img/battery-70.png");
+}
+.container .notification .wifi {
+  mask-image: url("img/wifi.svg");
+  -webkit-mask-image: url("img/wifi.svg");
+}
+.container .notification .signal {
+  height: 15px;
+  mask-image: url("img/signal.svg");
+  -webkit-mask-image: url("img/signal.svg");
+}
+.container #reload {
+  position: absolute;
+  top: 35px;
+  right: 10px;
+  mask-image: url("img/refreshing.svg");
+  -webkit-mask-image: url("img/refreshing.svg");
+  background-color: #0392cf;
+  display: none;
+  opacity: 0;
+  transition: all 0.3s linear;
+}
 
 @media (max-width: 405px) {
   .container {
-    width: 95%; }
-    .container .card {
-      width: 100%; } }
+    width: 95%;
+  }
+  .container .card {
+    width: 100%;
+  }
+}
 
 /*# sourceMappingURL=style.css.map */
