@@ -34,7 +34,6 @@ body {
   position: relative;
 }
 .container .card {
-  width: 404px;
   height: 500px;
   box-shadow: 0 0 10px 0 #dddddd;
   clip-path: inset(0px -10px -10px -10px);
@@ -155,6 +154,21 @@ body {
 .container .mobilBtn #left:hover, .container .mobilBtn #right:hover {
   background: black;
 }
+.container .mobilBtn #range {
+  transition: all 0.3s linear;
+  overflow: visible;
+  width: 100%;
+  height: 1.4rem;
+  padding: 0;
+  background-color: transparent;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  margin: 0;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+}
 .container .notification {
   display: flex;
   justify-content: space-between;
@@ -195,8 +209,8 @@ body {
 }
 .container #reload {
   position: absolute;
-  top: 35px;
-  right: 10px;
+  top: 45px;
+  right: 30px;
   mask-image: url("img/refreshing.svg");
   -webkit-mask-image: url("img/refreshing.svg");
   background-color: #0392cf;
@@ -205,6 +219,12 @@ body {
   transition: all 0.3s linear;
 }
 
+@media (max-width: 500px) {
+  .container .mobilBtn #range {
+    display: block;
+    opacity: 1;
+  }
+}
 @media (max-width: 405px) {
   .container {
     width: 95%;

@@ -5,11 +5,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/privet_bootstrap.css">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     
     <div class="container">
+        <div id="logs"></div>
         <div class="notification">
             <div class="first">
                 <div id="time"></div>
@@ -39,12 +42,15 @@
         </div>
         <div class="mobilBtn">
             <button type="button" id="left">&#8592;</button>
+            <input type="range" name="" id="range" class="custom-range">
             <button type="button" id="right">&#8594;</button>
         </div>
         <div id="reload" class="icon"></div>
         
     </div>
-
+    <!-- <script src="js/jquery-3.5.1.slim.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script> -->
     <script src="main.js"></script>
 </body>
 </html>

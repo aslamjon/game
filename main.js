@@ -16,6 +16,7 @@ setInterval('getDatee()', 10000)
 
 let ball = document.querySelector('.ball');
 
+
 let translateY = 300;
 let x = 10;
 let y = 320;
@@ -101,31 +102,34 @@ function startBtn() {
     settingsKeyboardAndMouse();
     card.style.background = 'rgba(255, 255, 255, 1)';
     ball.style.background = '#408ec6';
+    ball.style.background = 'url(img/volleyball.svg)'
     start.style.opacity = '0';
-    right.style.display = 'block';
-    left.style.display = 'block';
     title.style.opacity = '0';
     reload.style.display = 'inline-block';
-    setTimeout(function() {
-        start.style.display = 'none';
-        right.style.opacity = 1;
-        left.style.opacity = 1;
-        title.style.display = 'none';
-        reload.style.opacity = 1;
-    }, 500);
+    if (window.innerWidth >= 500) {
+        right.style.display = 'block';
+        left.style.display = 'block';
+        setTimeout(function() {
+            start.style.display = 'none';
+            right.style.opacity = 1;
+            left.style.opacity = 1;
+            title.style.display = 'none';
+            reload.style.opacity = 1;
+        }, 500);
+    } else {
+        setTimeout(function() {
+            right.style.opacity = 0;
+            right.style.display = 'none';
+            left.style.opacity = 0;
+            left.style.display = 'none';
+
+        },500);
+    }
     // One is setInterval. The other one is a nested setTimeout, like this:
     runTopId = setTimeout(function runSet() {
         runTopId = setInterval(runToTop, 500);
 
-        // runToTop();
-        // if (y < 10) {
-        //     // clearInterval(runTopId);
-        //     clearTimeout(runTopId);
-        //     gameOverBtn();
-        // } else 
-        // runTopId = setTimeout(runSet, 300);
     }, 600)
-    // runTopId = window.setInterval(runToTop,200);
     
 }
 start.onclick = startBtn;
@@ -137,15 +141,22 @@ function runToTopSettings(transY) {
     ballWalk()
     createPlace()
 }
+let defaultTop = 20
 function runToTop() {
-    runToTopSettings (20);
+    runToTopSettings (defaultTop);
     if (y < 10) {
         clearInterval(runTopId);
         // clearTimeout(runTopId);
         gameOverBtn();
     } else if (y > card.clientHeight -20) {
-        runToTopSettings (40);
+        runToTopSettings (defaultTop + 40);
     }
+    if (level == 50) defaultTop += 10, ball.style.background = 'url(img/basketball.svg)';
+    else if (level == 100) defaultTop += 10, ball.style.background = 'url(img/tennis (1).svg)';
+    else if (level == 150) defaultTop += 10, ball.style.background = 'url(img/soccer-ball-variant.svg)';
+    else if (level == 200) defaultTop += 10, ball.style.background = 'url(img/tennis.svg)';
+    else if (level == 250) defaultTop += 10;
+    else if (level == 300) defaultTop += 10;
     
 }
 
@@ -165,14 +176,14 @@ function ballWalk() {
         y += 60;
         level++;
         log.innerHTML = `Ball: <span>${level}</span>`;
-        ball.style.transform = `translate(${x}px, ${y}px)`;
+        ball.style.transform = `translate(${x}px, ${y}px) rotate(${y+80}deg)`;
         difference.shift();
         if (x >= difference[0].item1 && x < difference[0].item2){
             ballWalk()
         }
     }
     else {
-        ball.style.transform = `translate(${x}px, ${y}px)`;
+        ball.style.transform = `translate(${x}px, ${y}px) rotate(${y+80}deg)`;
     }
 
 }
@@ -205,12 +216,26 @@ function settingsKeyboardAndMouse() {
         }
     };
     
-    right.onclick = () => { toRight() };
-    right.onmousedown = () => { rightBtn = setInterval("toRight()", 50) };
-    right.onmouseup = () => { clearInterval(rightBtn) };
-    left.onclick = () => { toLeft() };
-    left.onmousedown = () => { leftBtn = setInterval("toLeft()", 50) };
-    left.onmouseup = () => { clearInterval(leftBtn) };
+    if (window.innerWidth > 500) {
+        right.onclick = () => { toRight() };
+        right.onmousedown = () => { rightBtn = setInterval("toRight()", 50) };
+        right.onmouseup = () => { clearInterval(rightBtn) };
+        left.onclick = () => { toLeft() };
+        left.onmousedown = () => { leftBtn = setInterval("toLeft()", 50) };
+        left.onmouseup = () => { clearInterval(leftBtn) };
+        
+    } else {
+        // left.ontouchstart = () => { leftBtn = setInterval(toLeft, 50); logs.innerHTML = 'start' + leftBtn; };
+        // left.ontouchend = () => {clearInterval(leftBtn); logs.innerHTML = 'end'+left; };
+        // right.ontouchstart = () => { rightBtn = setInterval(toRight, 50); logs.innerHTML = 'start' + rightBtn; };
+        // right.ontouchend = () => { clearInterval(rightBtn); logs.innerHTML = 'end' + rightBtn; };
+    }
+    let v = 0;
+    range.oninput = function() {
+        if (range.value > v) toRight(); 
+        else toLeft();
+        v = range.value;
+    }
 }
 
 function removeSettingsKeyboardAndMouse() {
